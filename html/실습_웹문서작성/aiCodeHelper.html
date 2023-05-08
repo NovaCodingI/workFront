@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    코드를 작성할 명령문장을 작성
+    회원가입화면 만들어줘
+    이메일이름
+    생년월일
+
+    문장선택후 단축키를 이용해서 코드를 생성
+    ctrl + alt + shift + z
+    
+    생성된 코드를 선택 한 후 다시 명령을 입력 하기 위해 단축키
+    ctrl + alt + shift + ,
+
+    스크립트로 유효성 검사해줘
+
+    <!-- Create a form for user registration -->
+    <form onsubmit="return validateForm()">
+        <!-- Add a label and input field for email -->
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+    
+        <!-- Add a label and input field for name -->
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+    
+        <!-- Add a label and input field for date of birth -->
+        <label for="dob">Date of Birth:</label>
+        <input type="date" id="dob" name="dob" required>
+    
+        <!-- Add a hidden input field for age -->
+        <input type="hidden" name="age" id="age">
+    
+        <!-- Add a submit button to submit the form -->
+        <button type="submit">Submit</button>
+    </form>
+    
+    <script>
+        function validateForm() {
+            // Get the values of email, name, and date of birth input fields
+            var email = document.getElementById("email").value;
+            var name = document.getElementById("name").value;
+            var dob = document.getElementById("dob").value;
+
+            // Check if email is valid
+            var emailRegex = /\S+@\S+\.\S+/;
+            if (!emailRegex.test(email)) {
+                alert("Please enter a valid email address");
+                return false;
+            }
+
+            // Check if name is valid
+            var nameRegex = /^[A-Za-z\s]+$/;
+            if (!nameRegex.test(name)) {
+                alert("Please enter a valid name");
+                return false;
+            }
+
+            // Check if date of birth is valid
+            var dobRegex = /^\d{4}-\d{2}-\d{2}$/;
+            if (!dobRegex.test(dob)) {
+                alert("Please enter a valid date of birth in the format yyyy-mm-dd");
+                return false;
+            }
+
+            // Extract age from date of birth
+            var birthday = new Date(dob);
+            var ageDiff = Date.now() - birthday.getTime();
+            var ageDate = new Date(ageDiff);
+            var age = Math.abs(ageDate.getUTCFullYear() - 1970);
+
+            // Set age in the hidden input field
+            document.getElementById("age").value = age;
+
+            // If all input fields are valid, submit the form
+            return true;
+        }
+    </script>
+</body>
+</html>

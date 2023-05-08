@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    table, td, th {
+      border:3px solid #4deb04;
+      border-collapse : collapse;
+    }
+    td, th {
+      padding:10px 20px;
+    }
+    td:last-child{
+      width:200px;
+    }
+  </style>
+</head>
+<body>
+  <!-- <b> 로 할필요없이 <th>로 하면 제목표시가 태그되어 진하게 강조됨-->
+<h1>수습 국원 지원 양식</h1>
+<table border='1'>
+  <tr>
+    <th colspan='1' rowspan='3' style="text-align:center">개인정보</th>
+    <td style="text-align:center"><b>이름</b></td>
+    <td></td>
+  </tr>
+  <tr>
+    <th style="text-align:center">학과/학번</th>
+    <td></td>
+  </tr>
+  <tr>
+    <th style="text-align:center">연락처</th>
+    <td></td>
+  </tr>
+  <tr>
+    <th style="text-align:center">지원분야</th>
+    <td colspan='2'></td>
+  </tr>
+</table>
+</body>
+</html>
+
+
+<!-- 태그들한테 입히는것
+  <style>
+    table, td, th {
+      border:1px solid #ccc;
+      // 줄을 하나로 붙이고 싶어
+      border-collapse : collapse;
+    }
+    // padding은 한칸에.. 상하좌우 4방으로 지정해줄수있음
+    td, th {
+      padding:10px 20px;
+    }
+    td:last-child{
+      width:200px;
+    }
+  </style>
+-->
