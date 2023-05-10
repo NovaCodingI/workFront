@@ -9,6 +9,109 @@
 <body>
     <h1>회원가입</h1>
     <form>
+        <fieldset>
+            <legend>필수 입력 사항</legend>
+            <table border='1'>
+                <tr>
+                    <!-- for=연결해줄 요소의 id값-->
+                    <td><label for='userId'>ID</label></td>
+                    <td><input type="text" name="userId" id="userId"
+                            placeholder='아이디 10글자 이내'></td>
+                    <td><input type="button" value="중복확인"></td>
+                </tr>
+                <td>
+                    <label for='userPw'>비밀번호</label>
+                </td>
+                <td>
+                    <input type="password" name="userPw" id="userPw"
+                            placeholder='영문, 숫자, 특수문자 포함 8자 이상'>
+                </td>
+                <td></td>
+                <tr>
+                    <td>
+                        <label for='pwCheck'>비밀번호 확인</label>
+                    </td>
+                    <td>
+                        <input type="password" name="pwCheck" id="pwCheck">
+                        <td></td>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for='userEmail'>Email</label></td>
+                    <td><input type="email" name="userEmail" id="userEmail"></td>
+                    <td>
+                        <!-- 드롭다운박스 -->
+                        <select name="emailAddr" id="emailAddr">
+                            <option value='etc' label='직접입력' selected>직접입력</option>
+                            <option value='naver.com' label='naver.com'></option>
+                            <option value="gmail.com" label='gmail.com'></option>
+                            <option value='daum.net' label='daum.net'></option>
+                        </select>
+                    </td>
+                </tr>
+
+            </table>
+        </fieldset>
+        <fieldset>
+            <!-- fieldset의 제목-->
+            <legend>추가 정보</legend>
+            <ul>
+                <li>
+                    <label for='addFile'>프로필 사진 : </label>
+                    <input type="file" name="addFile" id="addFile">
+                </li>
+                <li>
+                    <label for='gender'>성별 : </label>
+                    <input type="radio" name="gender" id="gender" value='M'>남자
+                    <input type="radio" name="gender" id="gender" value='F'>여자
+                </li>
+                <li>
+                    <label for='birth'>생년월일 : </label>
+                    <input type="date" name="birth" id="birth">
+                </li>
+                <li>
+                    <!-- 한글로 value를 넣으면 깨질수있기때문에 지양하고 영어를 선호하자-->
+                    취미 : <br>
+                    <input type="checkbox" name="hobby" id="hobby1" value='baseball'>
+                    <label for='hobby1'>야구</label>
+                    <input type="checkbox" name="hobby" id="hobby2" value='basketball'>
+                    <label for='hobby2'>농구</label>
+                    <input type="checkbox" name="hobby" id="hobby3" value='football'>
+                    <label for='hobby3'>축구</label>
+                    <br>
+                    <input type="checkbox" name="hobby" id="hobby4" value='study'>
+                    <label for='hobby4'>공부</label>
+                    <label>
+                    <input type="checkbox" name="hobby" id="hobby5" value='listenMusic'>
+                    음악감상
+                    </label>
+                    <br>
+                    <input type="checkbox" name="hobby" id="hobby6" value='etc'>
+                    <label for='hobby6'>기타 : <input type="text" name="etcTxt" id="etcTxt"></label>
+                </li>
+                <li>
+                    <label for="introduce">자기소개</label>
+                    <textarea name="introduce" id="introduce"
+                                cols="50" rows="5" style='resize:none;'></textarea>
+                </li>
+            </ul>
+        </fieldset>
+
+        <p>
+        <input type="submit" value="회원가입">
+        <input type="reset" value="다시입력">
+        <input type="button" value="이전으로">
+        </p>
+
+
+    </form>
+   
+</body>
+</html>
+
+<!--
+ <h1>회원가입</h1>
+    <form>
     <fieldset>
        <legend>필수 입력 사항</legend>
        <table>
@@ -65,5 +168,4 @@
     <br>
     <input type="submit" value="회원가입"> <input type="reset" value="다시입력"> <input type="button" value="이전으로">
     </form>
-</body>
-</html>
+-->
