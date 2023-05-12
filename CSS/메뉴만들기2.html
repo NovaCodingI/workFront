@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>메뉴 만들기2</title>
+    <style>
+        *{
+            margin: 0px;
+        }
+        ul{
+            list-style: none;
+            padding: 5px;
+        }
+        li{
+            /* li요소를 가로로 배치하는 방법 */
+            float: left;
+            /* display: inline-block; */
+            width: 100px;
+            height: 30px;
+            border-left: 3px solid #990066;
+
+        }
+        a{
+
+            /* 블럭처럼 크기를 지정 하기 위해 inline-block으로 변경 */
+            display: inline-block;
+            width: 100px;
+            height: 30px;
+            /* height과 동일한 값을 주어 세로 정렬 */
+            line-height: 30px;
+            /* 가로정렬 */
+            text-align: center;
+            /* a 요소의 브라우저 기본 스타일 제거 */
+            text-decoration: none;
+            color: #573fef;
+            font-weight: 800;
+
+            /* border-left: 2px solid #b13d8b; */
+        }
+        hr{
+            /* float 해제 */
+            clear: both;
+            border-style: none;
+        }
+        
+        /* 요소에 마우스가 올라왔을때 */
+        a:hover{
+            color: white;
+            background-color: red;
+        }
+
+    </style>
+</head>
+<body>
+    <ul>
+        <li><a href='#'>애완견 종류</a></li>
+        <li><a href='#'>입양하기</a></li>
+        <li><a href='#'>건강돌보기</a></li>
+        <li><a href='#'>더불어살기</a></li>
+    </ul>
+    <hr>
+    <br>
+    <h2>강아지 용품 준비하기</h2>
+    <br>
+    <hr>
+    <p>
+        <h3>강아지 집</h3>
+        <br>
+        강아지가 편히 쉴 수 있는 포근한 집이 필요합니다.
+        강아지의 집은 강아지가 다 큰 후에도 계속 쓸 수 있는 집으로 구입하세요.
+        집을 구입하실 때는 박음질이 잘 되어 있는지,
+        세탁이 간편한 제품인지 꼭 확인하시고 고르시는 것이 좋습니다.
+
+    </p>
+
+    <p>
+        <h3>강아지 먹이</h3>
+        <br>
+        강아지의 먹이는 꼭 어린 강아지용으로 나와있는 사료를 선택하세요.
+        강아지들은 사람에 비해 성장속도가 8배정도 빠르답니다.
+        따라서 강아지에게는 성장속도에 맞는 사료를 급여하셔야 합니다.
+        사람이 먹는 음식을 먹게 되면 양념과 향신료에 입맛이 익숙해지고,
+        비만이 될 가능성이 매우 높아집니다.
+        강아지용 사료는 생후 12개월까지 급여하셔야 합니다.
+
+    </p>
+    <p>Copyright 2012 funnycom</p>
+</body>
+</html>
