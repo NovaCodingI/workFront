@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>웹문서 구조 만들기</title>
+    <link rel="stylesheet" href="실습1.css">
+</head>
+<body>
+    <div class="wrap">
+        <header>
+            <!-- 로고영역 -->
+            <div class='logo'>
+                <div class='logo_left'>
+                    <img src="images/logo.jpg" alt="로고">
+                </div>
+                <div class='logo_center'>
+                    <img src="images/mainlogo.jpg" alt="타이틀">
+                </div>
+                
+            </div>
+            <!-- 메뉴영역 -->
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Profile</a></li>
+                    <li><a href="#">Board</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+        </header>
+        
+        <main>
+
+            <!-- 왼쪽사이드 -->
+            <aside id='leftSide'>
+                <img src="images/left_img.jpg" alt="왼쪽이미지">
+            </aside>
+
+            <!-- 컨텐츠 -->
+            <div id='mainContent'>
+                <ul>
+                    <li><img src="images/main_img1.jpg" alt="메인이미지1">나무를 심는 사람들</li>
+                    <li><img src="images/main_img2.jpg" alt="메인이미지2">아이들에게 녹색미래를..</li>
+                    <li><img src="images/main_img3.jpg" alt="메인이미지3">설악산을 살리는 길</li>
+                    <li><img src="images/main_img4.jpg" alt="메인이미지4">사라지는 북극곰들</li>
+                </ul>
+            </div>
+
+            <!-- 오른쪽사이드 -->
+            <aside id='rightSide'>
+                <!-- 로그인영역 시작 -->
+                <div id='login_wrap'>
+                    <form id='login_form' action='' method=''>
+                        <div id='login_form_input'>
+                            <input type="text" name="userId" id="userId" placeholder='ID를 입력하세요.'>
+                            <input type="password" name="userPwd" id="userPwd" placeholder='PW를 입력하세요.'>
+                        </div>
+                        <div id='login_form_btn'>
+                            <input type="submit" value="로그인">
+                        </form>
+                        </div>
+                        <div id='login_link'>
+                            <a href="#">회원가입</a>
+                            <a href="#">ID/PW 찾기</a>
+                        </div>
+                </div>
+                <!-- 로그인영역 끝 -->
+
+                <img src="images/right_img.jpg" alt="오른쪽이미지" id='banner'>
+                
+                <img src="images/me_chat.jpg" alt="채팅창" id='chat'>
+                
+            </aside>
+        </main>
+        <!-- 푸터영역 -->
+        <footer>
+            <img src="images/footer.jpg" alt="아래이미지">
+        </footer>
+    </div>
+</body>
+</html>
+
+
+
+
+<!--
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>웹문서 구조 만들기</title>
+    <style>
+        *{
+            margin: 0px;
+            
+        }
+
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <header>
+            <div></div>
+            <nav></nav>
+        </header>
+        
+        <div class="main">
+            <aside></aside>
+            <main></main>
+            <aside></aside>
+        </div>        
+        <footer></footer>
+    </div>
+</body>
+</html>
+
+
+-->
