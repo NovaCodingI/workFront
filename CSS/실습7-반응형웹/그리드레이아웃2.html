@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>grid 레이아웃2</title>
+    <style>
+        .item{
+            padding: 10px;
+            background-color: #eee;
+            border: 1px dotted red;
+        }
+
+        .wrapper1{
+            border: 2px dotted blue;
+            display: grid;
+            /* 최소값 200px, 최대값 1fr */
+            /* 화면을 꽉 채울만큼 컬럼 너비를 늘려서 표시 */
+            grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
+        }
+        .wrapper2{
+            border: 2px dotted blue;
+            display: grid;
+            display: grid;
+            /* 최소값 200px, 최대값 1fr */
+            /* 1fr 2fr 1fr 이면 4fr을 1/2/1 로 나눠서 비율을 생성 */
+            /* 컬럼 최소너비만큼 채워서 표시 */
+            grid-template-columns: repeat(auto-fill, minmax(200px,1fr));
+        }
+    </style>
+</head>
+<body>
+    <h2>auto-fill/auto-fit</h2>
+    <p>
+        컬럼의 너비와 함께 auto-fill 아니면 auto-fit을 지정 하면<br>
+        화면 너비에 따라 자동으로 컬럼의 갯수를 조절<br>
+        <br>
+        auto-fit : 남는공간 없이 꽉 채우기<br>
+        auto-fill : 최소너비까지 표시하고 남는 공간은 그대로 둠
+    </p>
+    <!-- auto-fit -->
+    <h2>auto-fit</h2>
+    <div class="wrapper1">
+        <div class="item">Proident nostrud labore aliqua ullamco eu.Proident nostrud labore aliqua ullamco eu.Proident nostrud labore aliqua ullamco eu.Proident nostrud labore aliqua ullamco eu.</div>
+        <div class="item">Proident nostrud labore aliqua ullamco eu.</div>
+        <div class="item">Proident nostrud.</div>
+        <div class="item">Proident nostrud labore aliqua ullamco eu.</div>
+        <div class="item">Proident nostrud labore aliqua ullamco eu.</div>
+    </div>
+
+    <!-- auto-fill -->
+    <h2>auto-fill</h2>
+    <div class="wrapper2">
+        <div class="item">Proident nostrud labore aliqua ullamco eu.Proident nostrud labore aliqua ullamco eu.Proident nostrud labore aliqua ullamco eu.Proident nostrud labore aliqua ullamco eu.</div>
+        <div class="item">Proident nostrud labore aliqua ullamco eu.</div>
+        <div class="item">Proident nostrud.</div>
+        <div class="item">Proident nostrud labore aliqua ullamco eu.</div>
+        <div class="item">Proident nostrud labore aliqua ullamco eu.</div>
+    </div>
+
+
+
+    
+</body>
+</html>

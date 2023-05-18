@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>별점주기</title>
+    <style>
+      .star-rate{
+        margin: 50px;
+        position: relative;
+      }
+      .star-rate div{
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        font-size: 20px;
+      }
+      .star-full{
+        /* px 별로 별이 차지하는 공간이 다름 */
+        /* width: 100px; */
+        width: 50px;
+        overflow: hidden;
+      }
+    </style>
+</head>
+<body>
+    <div class='star-rate'>
+        <div class='star-full'>★★★★★</div>
+        <div >☆☆☆☆☆</div>
+    </div>
+</body>
+</html>

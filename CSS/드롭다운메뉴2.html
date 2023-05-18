@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>드롭다운메뉴</title>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+            list-style: none;
+            text-decoration: none;
+            color: black;
+            box-sizing: border-box;
+        }
+        nav .menu{
+            overflow: hidden;
+        }
+        nav .menu li{
+            float: left;
+            width: 200px;
+            background-color: cornflowerblue;
+            position: relative;
+        }
+        nav .menu li a{
+            display: inline-block;
+            width: 100%;
+            line-height: 30px;
+            font-size: 1.2em;
+            font-weight: 800;
+            padding: 20px;
+        }
+        nav .menu li a:hover{
+            background-color: darkblue;
+            color: white;
+        }
+        .menu li a:hover + .submenu, .submenu:hover{
+            max-height: 500px;
+            display: block;
+        }
+        .submenu{
+            display: none;
+            max-height: 100px;
+            transition: max-height 5s;
+            overflow: hidden;
+        }
+        .menu li a:hover span{
+            transform: rotate(45deg);
+            color: white;
+        }
+        n.menu .submenu li{
+            padding-left: 20px;
+        }
+        .menu .submenu li a{
+            font-size: 1em;
+            font-weight: 700;
+        }
+        .menu li a span{
+            position: absolute;
+            right: 10px;
+            transition: 1s;
+            font-size: xx-large;
+        }
+    </style>
+</head>
+<body>
+   <header>
+        <nav>
+            <ul class='menu'>
+                <li><a href="#">메뉴1</a></li>
+                <li>
+                    <a href="#">메뉴2<span>+</span></a>
+                    <ul class='submenu'>
+                        <li><a href="#">서브메뉴2-1</a></li>
+                        <li><a href="#">서브메뉴2-2</a></li>
+                        <li><a href="#">서브메뉴2-3</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">메뉴3<span>+</span></a>
+                    <ul class='submenu'>
+                        <li><a href="#">서브메뉴3-1</a></li>
+                        <li><a href="#">서브메뉴3-2</a></li>
+                        <li><a href="#">서브메뉴3-3</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">메뉴4</a></li>
+                <li><a href="#">메뉴5</a></li>
+            </ul>
+        </nav>
+   </header>
+</body>
+</html>

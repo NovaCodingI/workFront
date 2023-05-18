@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>grid 레이아웃</title>
+    <style>
+        .wrapper{
+            border: 1px dotted red;
+            padding: 10px;
+            /* 그리드컨테이너 지정*/
+            display: grid;
+            /* 컬럼의 갯수와 크기지정
+                px 고정단위 이므로 컨텐츠가 길어질 경우 짤림 현상이 있을수 있음 */
+            grid-template-columns: 200px 200px 200px;
+
+            /* repeat(갯수, 크기) */
+            /* 너비가 200px 3개 */
+            grid-template-columns: repeat(3,300px);
+            /* fr(fraction단위) : 그리드컨테이너의 여유공간을 비율로 나눠 설정 */
+            grid-template-columns: repeat(3, 1fr);
+
+            /* 행의 갯수와 크기지정 */
+            /* 최대값 최소값 지정*/
+            grid-template-rows: 100px;
+            /* minmax(최소값,최대값); */
+            /* grid-template-rows: minmax(100px, auto); */
+            /* 몇줄인지 정해주자 */
+            grid-template-rows: minmax(2,minmax(100px, auto));
+
+            /* 줄간격, 컬럼 간격 */
+            gap: 10px 20px;
+            /* row-gap: 20px; */
+            /* column-gap: 20px; */
+        }
+
+
+        .item{
+            padding: 10px;
+            background-color: #eee;
+            
+        }
+        /* odd 홀수, even 짝수 */
+        .item:nth-child(even){
+            background-color: black;
+            color: white;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- div.wrapper>(div.item)*5 -->
+    <div class="wrapper">
+        <div class="item">Proident nostrud labore aliqua ullamco eu.Proident nostrud labore aliqua ullamco eu.Proident nostrud labore aliqua ullamco eu.Proident nostrud labore aliqua ullamco eu.</div>
+        <div class="item">Proident nostrud labore aliqua ullamco eu.</div>
+        <div class="item">Proident nostrud labore aliqua ullamco eu.</div>
+        <div class="item">Proident nostrud labore aliqua ullamco eu.</div>
+        <div class="item">Proident nostrud labore aliqua ullamco eu.</div>
+
+        
+    </div>
+    
+</body>
+</html>

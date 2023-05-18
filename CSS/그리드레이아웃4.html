@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>gird 레이아웃4</title>
+</head>
+    <style>
+        .wrapper{
+            /* width: 700px; */
+            border: 1px dotted red;
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            grid-template-rows: repeat(3,50px);
+            grid-template-areas:
+                "box1 box1 box1"
+                "box2 box3 box3 "
+                "box2 . box4";
+
+        }
+
+        .box{
+            /* color: white; */
+            text-align: center;
+            border: 1px dotted blue;
+        }
+        .box1{
+            grid-area: box1;
+            background-color: burlywood;
+        }
+        .box2{
+            grid-area: box2;
+            background-color: blueviolet;
+        }
+        .box3{
+            grid-area: box3;
+            background-color: darkgoldenrod;
+        }
+        .box4{
+            grid-area: box4;
+            background-color: steelblue;
+        }
+    </style>
+<body>
+    <!-- div.wrapper>div.box.box${box$}*5 -->
+    <div class="wrapper">
+        <div class="box box1">box1</div>
+        <div class="box box2">box2</div>
+        <div class="box box3">box3</div>
+        <div class="box box4">box4</div>
+        <div class="box box5">box5</div>
+    </div>
+    
+</body>
+</html>
