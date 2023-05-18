@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>드롭다운메뉴</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            text-decoration: none;
+            box-sizing: border-box;
+        }
+        .mainmenu li{
+            width: 200px;
+            /* height값 주면 메뉴 텍스트들 끼리 겹치기 때문에 값 안줄거임 */
+            /* height: 30px; */
+            border: 1px solid olivedrab;
+            background-color: khaki;
+            position: relative;
+            /* 가로 정렬 */
+            /* float: left; */
+            text-align: center;
+        }
+        .mainmenu li a{
+            /* 인라인요소이므로 크기를 지정하기위해 속성 변경 */
+            display: inline-block;
+            width: 100%;
+            line-height: 20px;
+            font-size: 1.2em;
+            font-weight: 800;
+            /* 텍스트끼리 붙어있으니 떨어트리기 위해 padding */
+            padding: 10px;
+            color:black;
+        }
+        .mainmenu li a:hover{
+            background-color: blue;
+            color: aliceblue;
+        }
+        .mainmenu .submenu li a{
+            font-size: 1em;
+            font-weight: 600;
+            padding-left: 20px;
+            color:slategray
+        }
+       .submenu{
+        /* 서브메뉴 초기 화면 숨김 */
+        /* display: none; */
+        /* 나오게 할땐 dispaly-block */
+        /* 메뉴에 커서 접촉 시 서브메뉴 펼침 기능 */
+        max-height: 0;
+        transition: 2s;
+        overflow: hidden;    
+    }
+    /* 우선순위 :인라인 > id > class > tag */
+    .mainmenu li a:hover + .submenu, .submenu:hover{
+        /* display를 block으로 할 경우 transition 실행안됨 */
+        display: block;
+        max-height: 300px; 
+        /* max-height으로 하니 왜 안되는지 몰갯.. */
+    }
+
+    .mainmenu li a span{
+        position: absolute;
+        right: 20px;
+        color: cornflowerblue;
+        transition: 1s;
+    }
+    nav .mainmenu li a:hover span{
+        transform: rotate(45deg);
+    }
+    </style>
+</head>
+<body>
+<header>
+    <nav>
+    <ul class='mainmenu'>
+        <li><a href="#">메뉴1</a></li>
+        <li><a href="#">메뉴2 <span>+</span></a>
+         <ul class='submenu'>
+            <li><a href="#">서브메뉴1</a></li>
+            <li><a href="#">서브메뉴2</a></li>
+            <li><a href="#">서브메뉴3</a></li>
+         </ul>
+        </li>
+        <li><a href="#">메뉴3</a></li>
+        <li><a href="#">메뉴4</a></li>
+        <li><a href="#">메뉴5</a></li>
+    </ul>
+    </nav>
+</header>
+</body>
+</html>

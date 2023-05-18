@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- name : 설정이름, content : 설정값 // 기본값 : initial-scale=1.0 -->
+    <!-- 기기의 width 값으로 설정하고 배율을 지정 -->
+    <meta name="viewport" content="width=device-width, initial-scale=2.0">
+    <title>뷰포트</title>
+    <style>
+        .em2{
+            font-size: 2em;
+        }
+        .em3{
+            font-size: 0.5em;
+        }
+        .rem2{
+            font-size: 2rem;
+        }
+        html{
+            /* 기본글자 크기 = 1rem // 변경 기본값은 16px*/
+            font-size: 12px;
+        }
+        .vw1{
+            font-size: 1vw;
+        }
+        .vw2{
+            font-size: 2vw;
+        }
+        .vh1{
+            font-size: 1vh;
+        }
+        .vh2{
+            font-size: 2vh;
+        }
+        .vmin{
+            font-size: 2vmin;
+        }
+        .vmax{
+            font-size: 2vmax;
+        }
+    </style>
+</head>
+<body>
+    <p>
+        상대단위 : 고정되지 않고 어떤 기준에 따라
+                    유동적으로 바뀔수 있는 길이(em,rem,%,vw,vh)<br>
+        절대단위 : 항상 고정된 길이를 나타내는 단위 (px,pt)<br>
+    </p>
+    <h2>viewport</h2>
+    현재 화면에 보여지는 영역
+    <p>
+    기기별 뷰포트가 다르므로 동일한 웹페이지라도
+    기기에 따른 배율 조정이 발생 하여 화면의 크기가 다르게 보이는 현상
+    </p>
+
+    <h2>단위</h2>
+    브라우저의 기본 글자크기
+
+    <h2>em과 rem</h2>
+    font-size에 비례해서 결정되는 상대단위<br>
+    em : 요소의 위치를 기준으로 1em<br>
+    rem : 최상위요소(html)의 글자크기를 기준으로 1rem
+
+    <!-- 1em은 위치가 굉장히 중요 부모자식 관계를 보고 어떻게 다른지 확인해보자 -->
+    <div>
+        div 1depth
+        <div class='em2'>
+            div 2depth
+            <div class='em2'>
+                div 3depth
+                <div class='em3'>
+                    div 4depth
+                </div>
+            </div>
+        </div>
+    </div>
+<br><br><br><br>
+
+    <div>
+        div 1depth
+        <div class='rem2'>
+            div 2depth
+            <div class='rem2'>
+                div 3depth
+                <div class='rem2'>
+                    div 4depth
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h2>vw</h2>
+    <!-- 부모요소와는 상관이 없다 -->
+    화면 너비의 1/100 : 1vw
+
+    <div class='vw1'>vw1
+        Exercitation dolor incididunt occaecat occaecat est. Proident ullamco enim cupidatat velit esse ea elit. Incididunt anim consequat officia sint est est ex deserunt in in. Fugiat aute magna anim ea in cillum ad nulla et commodo dolore velit esse cupidatat. Lorem eu anim id sit aliquip labore ullamco. Dolor consectetur occaecat mollit consectetur labore ipsum ea nulla deserunt commodo sit laboris.
+        Aliqua adipisicing enim duis minim dolore reprehenderit culpa Lorem. Anim ipsum voluptate mollit officia laborum quis reprehenderit mollit aliqua consectetur nulla veniam. Laboris labore est esse magna quis irure deserunt nulla ex irure non exercitation culpa nostrud. Eu enim reprehenderit do incididunt do pariatur.
+    </div>
+    <br>
+    <div class='vw2'>vw2
+        Pariatur exercitation cillum cupidatat non enim elit fugiat enim mollit. Ex dolore qui labore officia do. Cupidatat occaecat deserunt incididunt aute. Velit nostrud cupidatat labore occaecat commodo labore ut exercitation et sint aliquip enim amet. Aliqua adipisicing eu cillum laboris non. Lorem ut labore ex ullamco adipisicing adipisicing cupidatat est eu fugiat in aute sit veniam. Pariatur nostrud est ipsum quis nostrud excepteur labore.
+        Eiusmod laborum excepteur laboris ea sint proident quis exercitation fugiat aliqua. Deserunt veniam minim dolore ex nisi anim duis. Velit excepteur sint ea et nisi proident.
+    </div>
+    <hr>
+    <h2>vh</h2>
+    화면 높이의 1/100 : 1vh
+
+    
+    <div class='vh1'>vh1
+        Exercitation dolor incididunt occaecat occaecat est. Proident ullamco enim cupidatat velit esse ea elit. Incididunt anim consequat officia sint est est ex deserunt in in. Fugiat aute magna anim ea in cillum ad nulla et commodo dolore velit esse cupidatat. Lorem eu anim id sit aliquip labore ullamco. Dolor consectetur occaecat mollit consectetur labore ipsum ea nulla deserunt commodo sit laboris.
+        Aliqua adipisicing enim duis minim dolore reprehenderit culpa Lorem. Anim ipsum voluptate mollit officia laborum quis reprehenderit mollit aliqua consectetur nulla veniam. Laboris labore est esse magna quis irure deserunt nulla ex irure non exercitation culpa nostrud. Eu enim reprehenderit do incididunt do pariatur.
+    </div>
+    <br>
+    <div class='vh2'>vh2
+        Pariatur exercitation cillum cupidatat non enim elit fugiat enim mollit. Ex dolore qui labore officia do. Cupidatat occaecat deserunt incididunt aute. Velit nostrud cupidatat labore occaecat commodo labore ut exercitation et sint aliquip enim amet. Aliqua adipisicing eu cillum laboris non. Lorem ut labore ex ullamco adipisicing adipisicing cupidatat est eu fugiat in aute sit veniam. Pariatur nostrud est ipsum quis nostrud excepteur labore.
+        Eiusmod laborum excepteur laboris ea sint proident quis exercitation fugiat aliqua. Deserunt veniam minim dolore ex nisi anim duis. Velit excepteur sint ea et nisi proident.
+    </div>
+
+    <h2>vmin</h2>
+    뷰포트 너비와 높이중 작은값의 1%
+
+    <div class='vmin'>2vmin
+        Exercitation dolor incididunt occaecat occaecat est. Proident ullamco enim cupidatat velit esse ea elit. Incididunt anim consequat officia sint est est ex deserunt in in. Fugiat aute magna anim ea in cillum ad nulla et commodo dolore velit esse cupidatat. Lorem eu anim id sit aliquip labore ullamco. Dolor consectetur occaecat mollit consectetur labore ipsum ea nulla deserunt commodo sit laboris.
+        Aliqua adipisicing enim duis minim dolore reprehenderit culpa Lorem. Anim ipsum voluptate mollit officia laborum quis reprehenderit mollit aliqua consectetur nulla veniam. Laboris labore est esse magna quis irure deserunt nulla ex irure non exercitation culpa nostrud. Eu enim reprehenderit do incididunt do pariatur.
+    </div>
+
+    <h2>vmax</h2>
+    뷰포트 너비와 높이중 큰값의 1%
+
+    <div class='vmax'>2vmax
+        Exercitation dolor incididunt occaecat occaecat est. Proident ullamco enim cupidatat velit esse ea elit. Incididunt anim consequat officia sint est est ex deserunt in in. Fugiat aute magna anim ea in cillum ad nulla et commodo dolore velit esse cupidatat. Lorem eu anim id sit aliquip labore ullamco. Dolor consectetur occaecat mollit consectetur labore ipsum ea nulla deserunt commodo sit laboris.
+        Aliqua adipisicing enim duis minim dolore reprehenderit culpa Lorem. Anim ipsum voluptate mollit officia laborum quis reprehenderit mollit aliqua consectetur nulla veniam. Laboris labore est esse magna quis irure deserunt nulla ex irure non exercitation culpa nostrud. Eu enim reprehenderit do incididunt do pariatur.
+    </div>
+    
+</body>
+</html>

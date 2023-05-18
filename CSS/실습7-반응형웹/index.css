@@ -1,0 +1,51 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: #3f7597;
+}
+
+#container{
+    width: 320px;
+    margin: 50px auto;
+}
+
+.card{
+    width: 300px;
+    height: 500px;
+    margin: 20px;
+    border: 1px solid #ccc;
+    background-color: white;
+    position: relative;
+}
+
+.words{
+    position: absolute;
+    left: 10px;
+    top: 300px;
+    padding: 10px;
+    text-align: center;
+}
+
+/* min-width 768px, max-width:1719px */
+
+@media screen and (min-width:768px) and (max-width:1719px){
+    #container{
+        width: 570px;
+    }
+    /* 요소가 나란히 배치될수 있도록 너비를 조정 */
+    .card{
+        width: 550px;
+        height: 250px;
+    }
+    /* 기존 아래쪽 -> 이미지의 왼쪽으로 위치 조정 */
+    .words{
+        left: 310px;
+        top: 50px;
+        width: 200px;
+        
+    }
+}
