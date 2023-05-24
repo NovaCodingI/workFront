@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>배열_실습</title>
+</head>
+<body>
+    <h1>배열_실습</h1>
+
+    <hr>
+
+    <h2>문제 1</h2>
+    <p>
+        다음 보기에 있는 데이터들은 배열로 받고 하나의 배열로 합쳐보세요.<br>
+        이때 입력 필드에 배열에 있는 데이터를 전송하면 배열의 alert를 통하여<br>
+        배열의 위치를 알려주고, 없으면 "존재하지 않습니다"를 알려주면 됩니다.<br>
+    </p>
+
+    <fieldset>
+        <legend>보기</legend>
+        <label id="la1">사과,바나나,당근</label><br>
+        <label id="la2">김밥,치즈,떡볶이,햄버거</label><br>
+        <label id="la3">환타,사이다,콜라</label><br>
+        <label id="la4">고양이,강아지</label><br>
+	</fieldset>
+	<br>
+    <input type="text" placeholder="찾을 문자열을 입력하세요" size=100 id="text">
+	
+    <button onclick="arrayTest1();"> 전송 및 처리 </button>
+
+    
+    <script>
+        // 타입확인해보기
+        // console.log(`la1 : ${typeof(la1)}`);
+
+        function arrayTest1(){
+
+            // la1요소를 선택 후 태그안의 문자열을 배열로 만들기
+            // , 로 되어있으니 , 구분자 주면 배열로 만들어 지겠죠?
+            let la1 = document.getElementById('la1').innerText.split(',');
+            let la2 = document.getElementById('la2').innerText.split(',');
+            let la3 = document.getElementById('la3').innerText.split(',');
+            let la4 = document.getElementById('la4').innerText.split(',');
+
+            // console.log('la1 :', la1);
+            // console.log('la2 :', la2);
+            // console.log('la3 :', la3);
+            // console.log('la4 :', la4);
+
+            
+
+            // 배열을 합쳐서 새로운 배열을 만들어 줍시다.
+            let arr = la1.concat(la2, la3, la4);
+
+            // 타입확인해보기
+            // console.log(`arr : ${typeof(arr)}`);
+
+            // text필드 값 읽어오기 text필드.value
+            let text = document.getElementById('text').value;
+
+            // text 값이 속해있는 index 반환
+            // 없으면 -1
+            let index = arr.indexOf(text);
+
+            if(index >= 0){
+                alert(`인덱스 : ${index}`);
+            } else {
+                alert('못찾았당');
+            }
+        }
+    </script>
+
+    
+    
+    <hr>
+
+    <h2>문제 2 </h2>
+
+    <p>    
+        다음 보기에 있는 문자열을 가지고 정답과 같이 만드세요. (별도의 문자열을 쓰면 안 된다.)<br>
+        그리고 출력 부분에 출력하도록 하면 됩니다.
+        정답 : "bklove"
+    </p>
+
+    <fieldset>
+        <legend>보기</legend>
+
+        <label id="stringla1">k b</label><br>
+        <label id="stringla2">e v o l</label><br>
+    </fieldset>
+
+    <br>
+
+    <p style="border:1px solid red;" id="print">이 부분에 정답이 출력 될 수 있도록 하세요</p>
+
+    <button onclick="reverseTest();">처리</button>
+
+    <script>
+        
+        let str1 = document.getElementById('stringla1').innerText.split(' ');
+        let str2 = document.getElementById('stringla2').innerText.split(' ');
+        
+        
+        function reverseTest(){
+
+            let data1 = str1.reverse();
+            let data2 = str2.reverse();
+
+            let arr = data1.concat(data2);
+            let str = arr.join(' ');
+
+            let print = document.getElementById('print');
+
+            print.innerText = `${str}`;
+
+            
+
+            // print.innerText = `str1 : [${str1.reverse()}]`;
+            // let str1 = document.getElementById('stringla1') 이상태로 출력하면 에러남
+
+        }
+    </script>
+    
+    
+    <hr>
+    
+    <h2>문제 3</h2>
+    <p>
+        문자열을 여러 개 입력받은 후 출력 버튼 클릭 시 입력했던 모든 문자열이 출력되도록 만드세요.<br>
+        단, 모든 문자열은 내림차순으로 정렬 후에 출력된다.
+        예) 개구리 -> 입력, 바나나 -> 입력, 복숭아 -> 입력<br>
+        출력 : 복숭아, 바나나, 개구리
+    </p>
+    
+    <fieldset>
+        <legend>입력</legend>
+        <input type="text" id="strInput"><button onclick="input()">입력</button>
+	</fieldset>
+	<br>
+    <p style="border:1px solid red;" id="print2">이 부분에 정답이 출력 될 수 있도록 하세요</p>
+	<div id="result1"></div>
+    <button onclick="print()">출력</button>
+
+    <!-- 
+    함수 외부에 배열 선언
+    push 함수 내부에 넣어주기
+    출력버튼 p에다가 출력
+    -->
+
+    <script>        
+
+        //전역변수
+        let data = [];
+
+        // strInput에 입력된 내용을 data 배열에 저장
+        function input(){
+            let strInput = document.getElementById('strInput');
+
+            // 배열에 값을 저장
+            data.push(strInput.value);
+
+            // 초기화
+            strInput.value = '';
+            
+
+            // 출력값 초기화
+            document.getElementById('print2').innerHTML= ' ';
+
+            // 출력 요소 업데이트
+            // updatePrint();
+        }
+
+        function print(){
+            console.log('print()');
+
+            data.sort().reverse();
+
+            document.getElementById('print2').innerHTML=data.join();
+
+            // , 이후 공백을 주고싶어서.
+            print2.innerHTML = data.join(', ');
+
+            // 초기화
+            data = [];
+
+            // 출력 요소 업데이트
+            // updatePrint();
+
+        }
+
+        /*
+            혼자 해보기 updatePrint();와 연관
+         function updatePrint() {
+         let print2 = document.getElementById('print2');
+
+         if (data.length > 0) {
+             print2.style.display = 'block';
+             print2.innerHTML = data.join(', ');
+         } else {
+             print2.style.display = 'none';
+         }
+        }
+        */
+    </script>
+    
+    <hr>
+
+    <h2>문제 4</h2>
+
+    <p>
+        다음 보기의 문자열을 바탕으로<br>
+        삭제할 음식과 추가할 음식을 입력받아서  <br>
+        지우고, 추가하는 코드를 작성하여라. (단, 1개씩 입력)<br>
+        <br>
+        예시) 삭제 : 당근  / 추가 : 타코야끼 <br>
+        결과-> 피자 치킨 햄버거 떡볶이 타코야끼  <br>
+    </p>
+
+    <fieldset>
+        <legend>보기</legend>
+        <label id="stringla4">피자 치킨 당근 햄버거 떡볶이</label><br>
+    </fieldset>
+    
+    <br>
+    
+	<input type="text" id="remove" size="25" placeholder="삭제할 음식 이름을 입력하세요">
+	<input type="text" id="add" size="25" placeholder="추가할 음식 이름을 입력하세요">
+    <p style="border:1px solid red;" id="print4">이 부분에 정답이 출력 될 수 있도록 하세요</p>
+	<button onclick="arrayTest3();">처리 및 출력</button>
+
+    <script>
+        function arrayTest3(){
+            // 보기에 입력된 문자열을 배열로 만들기
+            let str = document.getElementById("stringla4").innerHTML;
+            let arr = str.split(' ');
+
+            // 텍스트필드에 입력된 값을 변수에 저장
+            let remove = document.getElementById('remove').value;
+            let add = document.getElementById('add').value;
+
+            // 삭제할 요소의 인덱스를 확인 후 삭제
+            // 요소의 인덱스를 반환, 없으면 -1
+            
+            // 요소로부터 값을 변수에 담아야하는데 문자열로 담으면 삭제가 안된다
+            // let index = arr.indexOf('remove');
+            let index = arr.indexOf(remove);
+            console.log(index);
+            if(index >= 0){
+                arr.splice(index, 1);
+            }
+
+            // for 문을 이용한 삭제
+            // for(let i=0; i<arr.length; i++){
+            //     if(arr[i] === remove){
+            //         arr.splice(i, 1);
+            //         break;
+            //     }
+            // }
+
+            // 추가할 요소를 배열을 맨 마지막에 추가
+            // 배열의 마지막에 요소를 추가
+            arr.push(add);
+
+            // 출력
+            let print4 = document.getElementById('print4');
+            print4.innerHTML = arr.join(' ');
+        }
+
+    </script>
+
+<!-- 혼자 해보다가 만거.. -->
+<!-- console.log(`stringla4 : [${typeof(stringla4)}]`);
+
+        let data1 =[];
+
+        function arrayTest3(){
+            let remove = document.getElementById('remove');
+            let add = document.getElementById('add');
+            
+            
+            let str4 = document.getElementById('stringla4').innerText.split(',');
+
+            let text = document.getElementById('remove').value;
+
+            let index = remove.indexOf(text);
+
+            if(index >= 0){
+                print4.innerHTML =`data1.slice(${index},${index})<br>`;
+                alert(`인덱스 : ${index}`);
+            } else {
+                alert('삭제하고자하는 데이터가 없습니다.');
+            }
+        } -->
+
+
+
+
+    <!-- <h2>문제 4</h2>
+
+    <p>
+        다음 보기의 문자열을 바탕으로<br>
+        삭제할 음식과 추가할 음식을 입력받아서  <br>
+        지우고, 추가하는 코드를 작성하여라. (단, 1개씩 입력)<br>
+        <br>
+        예시) 삭제 : 당근  / 추가 : 타코야끼 <br>
+        결과-> 피자 치킨 햄버거 떡볶이 타코야끼  <br>
+    </p>
+
+    <fieldset>
+        <legend>보기</legend>
+        <label id="stringla4">피자 치킨 당근 햄버거 떡볶이</label><br>
+    </fieldset>
+    
+    <br>
+    
+	<input type="text" id="remove" size="25" placeholder="삭제할 음식 이름을 입력하세요">
+	<input type="text" id="add" size="25" placeholder="추가할 음식 이름을 입력하세요">
+    <p style="border:1px solid red;" id="print4">이 부분에 정답이 출력 될 수 있도록 하세요</p>
+	<button onclick="arrayTest3();">처리 및 출력</button>   -->
+    
+    
+</body>
+</html>
