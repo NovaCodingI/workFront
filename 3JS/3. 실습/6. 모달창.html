@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Profile</title>
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/modal.css">
+  <script src='js/6. 모달창.js'></script>
+</head>
+<body>
+  <button id="open">프로필 보기</button>
+
+  <!-- 처음엔 보이지 않다가 id=open이 눌리면 보여지게끔 작업 -->
+  <!-- 모달창 시작 -->
+  <div id="modal-box">
+    <div id="modal-contents">
+      <button id="close">&times;</button>
+      <h1 id="title">My Profile</h1>
+      <div id="profile">
+        <img src="images/pf.png" alt="도레미">
+        <div id="desc">
+          <p class="user">이름 : 도레미</p>
+          <p class="user">주소 : somewhere</p>
+          <p class="user">연락처 : 1234-5678</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- 모달창 끝 -->
+  
+</body>
+</html>
+
+
+<!-- <button onclick='popup();'>팝업창띄우기</button>
+  <script src="js/modal.js"></script> // 오류의 원인 
+  <script>
+    function popup(){
+        let url = '6. 모달창.html';
+        let name = 'popup test';
+        let option = 'width=500, height=500, top=100, left=200';
+        // 페이지경로, 팝업창이름, 옵션
+        window.open(url, name, option);
+    }
+  </script> -->
