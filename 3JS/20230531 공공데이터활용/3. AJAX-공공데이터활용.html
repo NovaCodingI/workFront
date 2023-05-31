@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            list-style: none;
+        }
+    </style>
+</head>
+<body>
+    <div id='result'>
+
+    </div>
+    <script>
+        let url = 'https://apis.data.go.kr/B551011/GoCamping/locationBasedList?serviceKey=DU3KPJJtl2AKmdX%2FWH2DnaDhijW8wJFXUTXPdEjTBlHxKSdZVfJP5mIBAcUevwxp3ZQrC8gMUPuq%2BMqo8MDEPA%3D%3D&numOfRows=10&pageNo=1&MobileOS=ETC&MobileApp=AppTest&mapX=128.6142847&mapY=36.0345423&radius=2000&_type=json';
+        let xhr = new XMLHttpRequest();
+        xhr.open('get', url);
+        xhr.send();
+
+        // xhr이 상태가 변할때마다..
+        xhr.onreadystatechange = function(){
+            if(xhr.readyState === 4 && xhr.status === 200){
+                
+                // 객체로 변환
+                let jsObj = JSON.parse(xhr.responseText);
+                console.log(jsObj);
+
+                // JSON OBJ 가져와서 화면에 뿌려주는!!
+                let itemArr = jsObj.response.body.items.item;
+                
+                let resDiv = document.querySelector('#result');
+                resDiv.innerHTML += '<ul>';
+
+                for(item of itemArr){
+                    resDiv.innerHTML += `
+                        <li>
+                            <h1>${item.facltNm}</h1>
+                            <p><img src="${item.firstImageUrl}" alt="캠핑장 이미지"></p>
+                            <p>${item.intro}</p>    
+                        </li>
+                    `;
+                }
+
+                resDiv.innerHTML += '</ul>';
+            }
+        }
+    </script>
+    
+</body>
+</html>

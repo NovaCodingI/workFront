@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AJAX-공공데이터활용-KakaoMap</title>
+    <script src='5. AJAX-공공데이터활용-KakaoMap.js'></script>
+    <style>
+        *{list-style: none;}
+        .hidden{
+            display: none;
+        }
+    </style>
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=94c518ebaf91e990d6fada79de7d0be3"></script>
+</head>
+<body>
+
+    <div id="map" style="width:100%;height:350px;"></div>
+
+    <form id='campForm'>
+        <!-- <div class='hidden'> -->
+            serviceKey<br> <input type="text" name="serviceKey" value="KuDRxKiB8n%2FB597jEGWiz55IZlSuEBn2iNlaQR6k9jCYllUsAKOcwBJGNeCaSR%2BVRNbzfRA3IxlW2xR80T6V1Q%3D%3D">한페이지결과수 <br>
+            MobileOS<br>    <input type="text" name="MobileOS" value="ETC">OS 구분 : IOS (아이폰), AND (안드로이드), WIN (윈도우폰), ETC(기타) <br>
+            MobileApp<br>   <input type="text" name="MobileApp" value="AppTest">서비스명(어플명) <br>
+            mapX<br>    <input type="text" name="mapX" value="128.6142847">경도 : GPS X좌표(WGS84 경도 좌표) <br>
+            mapY<br>    <input type="text" name="mapY" value="36.0345423">위도 : GPS Y좌표(WGS84 위도 좌표) <br>
+            _type<br>   <input type="text" name="_type" value="json">타입을 json으로 변환<br>
+            _type : json 형식으로 받아오기 위해 _type에 json값을 넣어줍니다.
+        <!-- </div> -->
+        
+        numOfRows<br>   <input type="text" name="numOfRows" value="100">한페이지결과수<br>
+        pageNo<br>  <input type="text" name="pageNo" value="1">페이지번호<br>
+        radius<br>  <input type="text" name="radius" value="20000">거리 반경 : 거리 반경(단위:m) ,Max값 20000m=20Km <br>
+        
+        <p><button id = 'btnCampInfo'>캠핑장 정보 조회</button></p>
+        <button id="getLocation">위치 정보 가져오기</button>
+        
+    </form>
+    <div id='result'></div>
+</body>
+</html>
