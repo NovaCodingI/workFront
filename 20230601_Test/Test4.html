@@ -1,0 +1,242 @@
+<!-- 
+[문항4] 웹표준 기술을 이용해서 아래의 조건에 맞는 양식을 만들고 유효성 검사를 하시오
+	1) 값 전달 방식은 post 방식으로 한다.
+	2) ID중복검사 버튼의 type은 button을 작성한다.
+	3) 핸드폰 번호 앞자리는 반드시 선택하도록 유효성 검사를 하시오.
+	4) 성별도 남자, 여자 중에서 1개를 선택하도록 유효성 검사를 하시오.
+	5) 취미는 반드시 2개 이상 선택 하도록 유효성 검사를 하시오.
+	6) 자기소개는 100자 이내로 입력 하도록 유효성 검사를 하시오.
+	7) 회원가입 버튼의 type은 submit으로 작성하시오.
+	8) 입력 및 선택 양식에 대해서 모두 유효성 검사를 하시오.
+	9) 취소버튼을 클릭하면 input box가 모두 초기화 되도록 하시오.
+-->
+
+<!-- 페이지가 작동하지 않습니다.문제가 계속되면 사이트 소유자에게 문의하세요.
+HTTP ERROR 405
+sumbit 전송시
+
+HTTP 오류 405은 "Method Not Allowed" 오류로,
+클라이언트가 요청한 HTTP 메서드(예: GET, POST)가 서버에서 허용되지 않는 메서드일 때 발생합니다.
+이 오류는 서버 측에서 요청을 처리하기 위해 사용 가능한 메서드를 확인하고,
+클라이언트의 요청 메서드와 일치하지 않는 경우에 발생할 수 있습니다. -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>회원가입 양식</title>
+    <style>
+
+        table {
+            border-collapse: collapse;
+        }
+
+        table, th, td {
+            border: 2px solid rgb(29, 133, 133);
+            padding: 5px;
+        }
+
+        #Center {
+            text-align: center;
+        }
+
+        th {
+            font-style: italic;
+            color: firebrick;
+        }
+
+        .signUpBtn{
+            padding: 10px 20px;
+            margin-right: 10px;
+            font-size: 12px;
+            border: none;
+            border-radius: 4px;
+            background-color: #4CAF50;
+            color: #ffffff;
+            cursor: pointer;
+        }
+
+        .cancelBtn{
+            padding: 10px 20px;
+            margin-right: 10px;
+            font-size: 12px;
+            border: none;
+            border-radius: 4px;
+            background-color: #113012;
+            color: #ffffff;
+            cursor: pointer;
+        }
+
+        h2 {
+            display: inline;
+            background-color: #a7935e;
+            color: white;
+            font-style: italic;
+
+        }
+
+    </style>
+    <script>
+        function validateForm() {
+            // 유효성 검사 로직 작성
+            var selectedPhonePrefix = document.getElementById('phone-prefix').value;
+            var phoneNumber = document.getElementById('phone-number').value;
+            var selectedGender = document.querySelector('input[name="gender"]:checked');
+            var selectedHobbies = document.querySelectorAll('input[name="hobby"]:checked');
+
+            if (selectedPhonePrefix === "") {
+                alert("핸드폰 번호 앞자리를 선택해주세요.");
+                return false;
+            }
+
+            if (phoneNumber === "") {
+                alert("핸드폰 번호를 입력해주세요.");
+                return false;
+            }
+
+            if (!selectedGender) {
+                alert("성별을 선택해주세요.");
+                return false;
+            }
+
+            if (selectedHobbies.length < 2) {
+                alert("취미는 2개 이상 선택해주세요.");
+                return false;
+            }
+
+            var introduction = document.getElementById('introduction').value;
+            if (introduction.length > 100) {
+                alert("자기소개는 100자 이내로 입력해주세요.");
+                return false;
+            }
+
+            return true;
+    }
+
+        function checkDuplicate() {
+            // AJAX를 사용하여 서버로 아이디 중복 검사 요청을 보냅니다.
+            const id = document.getElementsByName('id')[0].value;
+            const xhr = new XMLHttpRequest();
+            const url = 'check_duplicate.php'; // 중복 검사를 수행하는 서버 사이드 파일 경로
+
+            // 요청을 오픈합니다.
+            xhr.open('POST', url, true);
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+            // 응답이 도착했을 때 처리할 콜백 함수를 등록합니다.
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === XMLHttpRequest.DONE) {
+                    if (xhr.status === 200) {
+                        // 서버로부터의 응답을 받았을 때 처리할 로직을 작성합니다.
+                        const response = JSON.parse(xhr.responseText);
+                        const isDuplicate = response.isDuplicate;
+
+                        // 중복 여부에 따라 화면에 표시하거나 다른 동작을 수행합니다.
+                        if (isDuplicate) {
+                            alert('중복된 아이디입니다.');
+                        } else {
+                            alert('사용 가능한 아이디입니다.');
+                        }
+                    } else {
+                        alert('서버로부터 응답을 받을 수 없습니다.');
+                    }
+                }
+            };
+
+            // 요청을 전송합니다.
+            xhr.send('id=' + encodeURIComponent(id));
+    }
+
+        function updateEmailDomain() {
+            const emailDomainSelect = document.getElementById('email-domain');
+            const emailDomainInput = document.getElementById('email-domain-input');
+            const selectedDomain = emailDomainSelect.value;
+
+            if (selectedDomain !== '') {
+            emailDomainInput.value = selectedDomain;
+            emailDomainInput.disabled = true;
+            } else {
+            emailDomainInput.value = '';
+            emailDomainInput.disabled = false;
+            }
+    }
+
+    </script>
+</head>
+<body>
+    <h2>&nbsp;&nbsp;회원가입 폼&nbsp;&nbsp;</h2>
+    <form action="process.php" method="post" onsubmit="return validateForm()">
+        <table>
+            <tr>
+                <th>ID</th>
+                <td colspan="5"><input type="text" name="id"> <button type="button" onclick="checkDuplicate()">ID중복검사</button></td>
+            </tr>
+            <tr>
+                <th>비밀번호</th>
+                <td colspan="5"><input type="password" name="password"></td>
+            </tr>
+            <tr>
+                <th>성명</th>
+                <td colspan="5"><input type="text" name="name"></td>
+            </tr>
+            <tr>
+                <th>E-Mail</th>
+                <td colspan="5"><input type="text" name="email-id" placeholder="이메일을 입력해주세요">@
+                    <input type="text" name="email-domain" id="email-domain-input">
+                <select id="email-domain" name="email-domain" onchange="updateEmailDomain()">
+                    <option value="">직접입력</option>
+                    <option value="naver.com">naver.com</option>
+                    <option value="daum.net">daum.net</option>
+                    <option value="google.com">google.com</option>
+                    <option value="yahoo.co.kr">yahoo.co.kr</option>
+                    <option value="메가패스.co.kr">메가패스</option>
+                    <option value="하나로통신.co.kr">하나로통신</option>
+                  </select>
+                </td>
+            </tr>
+            <tr>
+                <th>핸드폰번호</th>
+                <td colspan="5">
+                    <select id="phone-prefix" name="phone-prefix">
+                        <option value="">선택</option>
+                        <option value="010">010</option>
+                        <option value="011">011</option>
+                        <option value="016">016</option>
+                        <option value="016">017</option>
+                        <option value="016">018</option>
+                        <option value="016">019</option>
+                    </select>
+                    <input id="phone-number" type="text" name="first-phone-number"> - <input id="phone-number" type="text" name="second-phone-number">
+                </td>
+            </tr>
+            <tr>
+                <th>성별</th>
+                <td colspan="5">
+                <input type="radio" name="gender" value="남자">남자
+                <input type="radio" name="gender" value="여자">여자
+                </td>
+            </tr>
+            <tr>
+                <th>취미</th>
+                <td colspan="5">
+                <input type="checkbox" name="hobby" value="공부">공부
+                <input type="checkbox" name="hobby" value="등산">등산
+                <input type="checkbox" name="hobby" value="게임">게임
+                <input type="checkbox" name="hobby" value="낚시">낚시
+                <input type="checkbox" name="hobby" value="쇼핑">쇼핑
+                </td>
+            </tr>
+            <tr>
+                <th>자기소개</th>
+                <td colspan="5"><textarea id="introduction" name="introduction" rows="5" cols="60" maxlength="200" placeholder="자기소개를 100자 이내로 입력하세요"></textarea></td>
+            </tr>
+            <tr>
+                <td colspan="5" id="Center">
+                <button type="submit" class="signUpBtn">회원가입</button>
+                <button type="reset" class="cancelBtn">취소</button>
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>
+

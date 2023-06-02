@@ -1,0 +1,42 @@
+<!-- 
+    [문항3] 다음 그림안에 괄호에 들어갈 항목을 가-나-다-라 순으로 맞게 기술하시요
+
+    (가) Browser 화면과 Box 사이의 간격
+    (나) Box 선 두께
+    (다) Box 선 과 글씨 사이의 간격
+    (라) 글씨
+ -->
+
+ <!DOCTYPE html>
+ <html>
+   <head>
+     <title>박스 요소 예제</title>
+     <style>
+       .box {
+         width: 300px;
+         height: 200px;
+         margin: 20px; /* (가) Browser 화면과 Box 사이의 간격 (Margin) */
+         border: 2px solid black; /* (나) Box 선 두께 (Border) */
+         padding: 20px; /* (다) Box 선과 글씨 사이의 간격 (Padding) */
+         display: flex;
+         align-items: center;
+         justify-content: center;
+       }
+ 
+       .content {
+         font-size: 18px;
+         color: white;
+         background-color: rgb(96, 96, 143);
+         border: 3px dashed rgba(109, 194, 61, 0.815);
+       }
+     </style>
+   </head>
+   <body>
+     <div class="box">
+       <div class="content">
+         내용을 표현하는 부분 (라) 글씨 (Content)
+       </div>
+     </div>
+   </body>
+ </html>
+ 

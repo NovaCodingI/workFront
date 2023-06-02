@@ -1,0 +1,63 @@
+<!--
+    [문항2] 이벤트가 발생시 실행되는 함수를 작성 하시오
+    1) id가 btn인 요소가 클릭되면 testJson함수를 실행 합니다.
+    --------- 함수명 : testJson ---------
+    2) 보기의 학생정보를 JSON형식의 문자열로 생성하시오
+    3) 문자열을 JavaScript Object로 변환 후 console창에 출력 하시오
+    4) 변환된 Object를 JSON문자열로 변환후 console창에 출력 하시오
+-->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>이벤트와 JSON</title>
+  </head>
+  <body>
+    <button id="btn">버튼</button>
+    <div id="output"></div>
+
+    <script>
+      // 이벤트가 발생했을 때 실행되는 함수
+      function testJson() {
+        // 학생 정보를 JavaScript Object로 생성
+        var student1 = {
+          name: '고경희',
+          major: '컴퓨터공학',
+          grade: 2,
+          phone: '010-1111-2222'
+        };
+
+        var student2 = {
+          name: '홍길동',
+          major: '컴퓨터공학',
+          grade: 2,
+          phone: '010-2222-3333'
+        };
+
+        // JavaScript Object를 JSON 문자열로 변환
+        var student1JSON = JSON.stringify(student1);
+        var student2JSON = JSON.stringify(student2);
+
+        // JSON 문자열을 JavaScript Object로 변환
+        var student1Object = JSON.parse(student1JSON);
+        var student2Object = JSON.parse(student2JSON);
+
+        // 변환된 Object를 콘솔에 출력
+        console.log(student1Object);
+        console.log(student2Object);
+
+        // 변환된 Object를 화면에 출력
+        var outputElement = document.getElementById('output');
+        outputElement.innerHTML = '';
+        outputElement.innerHTML += '<pre>' + JSON.stringify(student1Object, null, 2) + '</pre>';
+        outputElement.innerHTML += '<pre>' + JSON.stringify(student2Object, null, 2) + '</pre>';
+      }
+
+      // 버튼 클릭 이벤트에 testJson 함수 등록
+      var btn = document.getElementById('btn');
+      btn.addEventListener('click', testJson);
+    </script>
+  </body>
+</html>
+
+

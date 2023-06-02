@@ -1,0 +1,62 @@
+<!--
+    [문항1] 자바스크립트를 이용하여 현재 시간, 분, 초를 출력하는 시계를 만드시오
+    1초 마다 시간이 갱신될수 있도록 코드를 작성 하시오
+-->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>시계</title>
+    <style>
+      #clock {
+        font-size: 50px;
+        text-align: center;
+        margin-top: 50px;
+        background-color: chartreuse;
+        width: 300px;
+        height: 300px;
+        display: inline-block;
+        line-height: 300px;
+      }
+      #clock-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        width: 100vw; /* 화면 가로 너비에 맞게 설정 */
+        height: 100vh; /* 화면 세로 높이에 맞게 설정 */
+      }
+
+    </style>
+  </head>
+  <body>
+    <div id = "clock-container">
+    <div id="clock"></div>
+    </div>
+
+    <script>
+      // 시계 업데이트 함수
+      function updateClock() {
+        var clockElement = document.getElementById('clock');
+        var now = new Date();
+        var hours = now.getHours();
+        var minutes = now.getMinutes();
+        var seconds = now.getSeconds();
+
+        // 시, 분, 초가 한 자리 숫자인 경우 앞에 0을 붙여 두 자리로 표시
+        hours = hours < 10 ? '0' + hours : hours;
+        minutes = minutes < 10 ? '0' + minutes : minutes;
+        seconds = seconds < 10 ? '0' + seconds : seconds;
+
+        // 시계 출력
+        clockElement.textContent = hours + ':' + minutes + ':' + seconds;
+      }
+
+      // 1초마다 시계 업데이트
+      setInterval(updateClock, 1000);
+
+      // 페이지 로드 시에도 시계 업데이트
+      window.onload = updateClock;
+    </script>
+
+  </body>
+</html>
