@@ -1,0 +1,72 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!--라이브러리를 부르지 않고 실행하면 에러 발생-->
+    <script src='/resources/js/jquery-3.7.0.js'></script>
+</head>
+<body>
+
+    <h2>JQuery</h2>
+    <p>
+        JQuery는 웹 개발에서 자주 사용되는 JavaScript 라이브러리
+            HTML 문서의 조작, 이벤트 처리, 애니메이션,
+            AJAX 요청 등을 간단하고 효율적으로 처리
+    </p>
+
+    <h3>JQuery 라이브러리 연결 방법</h3>
+    <p>
+        1) 파일 <br>
+        <!-- 링크 조금 더 유리합니다. 똑같이 받았어 (경로가 바뀐다면..? 파일을 받아서 저장을 해놓는것이 좋음) -->
+        2) 링크(CDN방식)<br>
+
+    </p>
+
+    <p>
+        <pre>
+            window.onload = function(){
+              // 실행 내용
+            };
+
+            window.onload 는
+            요소 다 로딩되고, 외부문서들도 다 가지고 온 뒤 실행
+            + 한번만 실행 가능 (한번만 가능. 마지막꺼만 적용됨
+                        -> 이벤트핸들러를 이용시 여러번 적용가능)
+        </pre>
+    </p>
+
+    <div id='test'>와우 내가 파란색이라니</div>
+    <div class='test'>와우 내가 파란색이라니</div>
+    <div class='test'>와우 내가 파란색이라니</div>
+
+    <script>
+        // 선택 방법은 3가지입니다. ready는 onload와 비슷합니다 다 준비되면 실행해줘
+        jQuery(document).ready(function(){
+            console.log('jQuery(document)');
+        })
+
+        $(document).ready(function(){
+            console.log('$(document)');
+        })
+        // 간결해져서 가장 많이 사용합니다
+        $(function(){
+            console.log('jQuery~!');
+        })
+            // css 선택자를 이용
+            // $(선택자).css(속성, 값)
+            $('h2').css('backgroundColor', 'yellow');
+            $('pre').css('backgroundColor', 'green');
+            $('h3').css('backgroundColor', 'blue');
+            $('#test').css('backgroundColor', 'blue');
+            $('.test').css('backgroundColor', 'blue');
+            
+    </script>
+
+    <div class='test'>와우 내가 파란색이라니</div>
+
+
+
+</body>
+</html>

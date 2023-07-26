@@ -1,0 +1,71 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src='/resources/js/jquery-3.7.0.js'></script>
+
+</head>
+<body>
+    <h1>Content 영역을 다루는 메서드</h1>
+    <h3>html() == innerHTML</h3>
+    <p>
+        <h4>$("선택자").html()</h4>
+        선택된 요소의 content영역의 값을 리턴 해줌(html 태그 포함)
+        
+        <h4>$("선택자").html("ㅋㅋㅋ")</h4>
+        선택된 요소의 content영역의 값을 변경 해줌(html 태그 인식)
+    </p>
+    <h1 id='t1'>
+        <a>naver</a>
+    </h1>
+
+    <h1 id='t2'>
+        empty
+        1234
+    </h1>
+
+    <script>
+        let temp = $('#t1').html();
+
+        console.log(temp);
+        // += 연산자처럼 사용하는 방법, - 연산은 안되고 NaN 이라는 글자가 나옵니다
+        $('#t2').html(temp + temp);
+
+        // $('선택자').children() : 선택자에 의해 선택된 요소의 직계 자식을 선택
+        $('#t2').children().attr("href", "https://www.naver.com");
+
+        // 선택된 요소의 content영역의 값을 변경하거나 반환 해줌
+        // (html 태그 인식X)
+        $('#t2').text(temp);
+        // $('#t2').text(temp + temp);
+        // $('#t2').text(temp + temp + temp - temp);
+    </script>
+
+    <!--div.test{테스트}*3-->
+
+    <div class="test">테스트</div>
+    <div class="test">테스트</div>
+    <div class="test">테스트</div>
+
+    <script>
+        $(function(){
+            // 자바스크립트는 반복문을 이용해서 처리
+            // -> JQeury에서 그냥 처리됨
+            $('.test').html('<h1>안녕하세요</h1>');
+            // 함수도 넣을수 있음
+            $('.test').html(function(){
+                return '<h1>변경이 잘 되나요? 이응이응</h1>';
+            });
+            $('.test').html(function(idx, content){
+                return '<h1>인덱스 : '+idx+' , 컨텐츠 : '
+                                            + content +'</h1>';
+            })
+
+        })
+    </script>
+
+</body>
+</html>

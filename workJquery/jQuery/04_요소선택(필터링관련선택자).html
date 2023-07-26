@@ -1,0 +1,91 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src='/resources/js/jquery-3.7.0.js'></script>
+    </head>
+<body>
+    <h3>필터 관련 선택자</h3>
+    <p>
+        선택자로 지정한 객체를 기준으로 객체 그룹에서 위치를 기준으로
+        객체를 선택하는 메서드
+    </p>
+
+    <table border="1">
+        <!-- (tr>td*3)*4 -->
+        <tr>
+            <td>이름</td>
+            <td>혈액형</td>
+            <td>거주지</td>
+        </tr>
+        <tr>
+            <td>심원용</td>
+            <td>A형</td>
+            <td>뉴욕</td>
+        </tr>
+        <tr>
+            <td>심투용</td>
+            <td>B형</td>
+            <td>뉴욕</td>
+        </tr>
+        <tr>
+            <td>심삼용</td>
+            <td>C형</td>
+            <td>런던</td>
+        </tr>
+        <tr>
+            <!-- 제목 : 가운데 정렬, 굵은 글씨 -->
+            <th colspan="2">총인원</th>
+            <th>3명</th>
+        </tr>
+    </table>
+    <script>
+        $(function(){
+            // 첫번째 행
+            $('tr:first').css('backgroundColor', 'black')
+                            .css('color', 'white');
+            // 마지막 행
+            $('tr:last').css({background:'red'
+                            , color:'blue'})
+            // 짝수행
+            $('tr:even').css({background:'purple'
+                            , color:'white'})
+            // 홀수행
+            $('tr:odd').css({background:'yellow'
+                            , color:'green'})
+        })
+    </script>
+
+    <hr>
+    <hr>
+    <hr>
+
+    <p>first, last, filter, eq, not</p>
+    <h3>필터링 관련 메서드</h3>
+    <!-- h4.test{test-$}*6 -->
+
+    <h4 class="test">test-1</h4>
+    <h4 class="test">test-2</h4>
+    <h4 class="test">test-3</h4>
+    <h4 class="test">test-4</h4>
+    <h4>test-5</h4><!--class 제거-->
+    <h4 class="test">test-6</h4>
+
+    <script>
+        $(function(){
+            // 첫번째
+            $('h4').first().css("font-size", "30px");
+            // 마지막
+            $('h4').last().css("font-size", "30px");
+            // 필터링
+            $('h4').filter(".test").html("test 클래스임 ㅋㅋ");
+            // not
+            $('h4').not(".test").css("color", "red");
+            // eq
+            $('h4').eq(2).text("eq로 골라봄 ㅎㅎ");
+        })
+    </script>
+</body>
+</html>

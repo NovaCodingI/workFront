@@ -1,0 +1,90 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    https://www.chartjs.org/
+    <h2>월별 회원가입 현황</h2>
+        <div>
+            <canvas id="myChart" width='350px' height='200px'></canvas>
+        </div>
+        
+        <!-- chart.js를 사용 하기 위해 CDN 추가 -->
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        
+        <script>
+            // 차트를 보여줄 요소 선택
+            const ctx = document.getElementById('myChart');
+        
+            // 차트 생성
+            new Chart(ctx, {
+            // 그래프의 종류
+            type: 'line', // bar : 막대그래프, line : 선그래프
+            data: {
+                // 하단 레이블
+                labels: ['1월', '2월', '3월', '4월', '5월', '6월'
+                            , '7월', '8월', '9월', '10월', '11월', '12월'],
+                // 상단 레이블
+                datasets: [{
+                label: '# 가입자수',
+                // 데이터
+                data: [7, 19, 3, 5, 2, 3, 10, 14, 15, 7, 49, 70],
+                borderWidth: 1
+                }]
+            },
+            options: {
+                // 사이즈 조정
+                responsive : false,
+                scales: {
+                y: {
+                    beginAtZero: true
+                }
+                }
+            }
+            });
+        </script>
+
+    <div>
+        <canvas id="myChart2" width='800px' height='500px'></canvas>
+    </div>
+
+    <!-- chart.js를 사용 하기 위해 CDN 추가 -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+        // 차트를 보여줄 요소 선택
+        const ctx2 = document.getElementById('myChart2');
+
+        // 차트 생성
+        new Chart(ctx2, {
+        // 그래프의 종류
+        type: 'bar', // bar : 막대그래프, line : 선그래프
+        data: {
+            // 하단 레이블
+            labels: ['1월', '2월', '3월', '4월', '5월', '6월'
+                        , '7월', '8월', '9월', '10월', '11월', '12월'],
+            // 상단 레이블
+            datasets: [{
+            label: '# 가입자수',
+            // 데이터
+            data: [7, 19, 3, 5, 2, 3, 10, 14, 15, 7, 49, 70],
+            borderWidth: 1
+            }]
+        },
+        options: {
+            // 사이즈 조정
+            responsive : false,
+            scales: {
+            y: {
+                beginAtZero: true
+            }
+            }
+        }
+        });
+    </script>
+
+</body>
+</html>
