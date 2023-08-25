@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- jquery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
+    <!-- openlayers -->
+    <link rel="stylesheet" href="https://openlayers.org/en/v4.6.5/css/ol.css" type="text/css">
+    <script src="https://openlayers.org/en/v4.6.5/build/ol.js"></script>
+    
+    <style>
+        .map {
+            width: 100%;
+            height: 800px;
+        }
+    </style>
+    
+    <script>
+        // dom ready
+        $(document).ready(function() {
+            init();
+        });
+    
+        function init() {
+            // 서울시의 좌표 정의
+            var seoulCoords = ol.proj.fromLonLat([126.9780, 37.5665]); // 서울의 경도, 위도
+            
+            // map 생성
+            var map = new ol.Map({
+                layers: [
+                    new ol.layer.Tile({
+                        //source: new ol.source.OSM() // OpenStreetMap 레이어
+                        source : new ol.source.XYZ({ //vworld api 사용
+                        url : 'http://api.vworld.kr/req/wmts/1.0.0/EAFD4F16-963E-3B01-9CA1-77DA24CB11DA/Base/{z}/{y}/{x}.png'
+                     })
+                    
+                    }),
+                    new ol.layer.Tile({
+                        source: new ol.source.TileWMS({
+                            url: 'http://localhost:8080/geoserver/yongin/wms',
+                            params: {
+                                'LAYERS': 'yongin:경기도한번더',
+                                'TILED': true,
+                            },
+                            serverType: 'geoserver',
+                        }),
+                    }),
+                    new ol.layer.Tile({
+                        source: new ol.source.TileWMS({
+                            url: 'http://localhost:8080/geoserver/yongin/wms',
+                            params: {
+                                'LAYERS': 'yongin:Point',
+                                'TILED': true,
+                            },
+                            serverType: 'geoserver',
+                        }),
+                    }),
+                                        new ol.layer.Tile({
+                        source: new ol.source.TileWMS({
+                            url: 'http://localhost:8080/geoserver/yongin/wms',
+                            params: {
+                                'LAYERS': 'yongin:Line',
+                                'TILED': true,
+                            },
+                            serverType: 'geoserver',
+                        }),
+                    }),
+                                        new ol.layer.Tile({
+                        source: new ol.source.TileWMS({
+                            url: 'http://localhost:8080/geoserver/opengis/wms',
+                            params: {
+                                'LAYERS': 'opengis:bikeroute_xyz_2023-08-22_17_53_34_BIKE_BIKEROAD — track_point',
+                                'TILED': true,
+                            },
+                            serverType: 'geoserver',
+                        }),
+                    }),
+                                        new ol.layer.Tile({
+                        source: new ol.source.TileWMS({
+                            url: 'http://localhost:8080/geoserver/opengis/wms',
+                            params: {
+                                'LAYERS': 'opengis:bikeroute_xyz_2023-08-22_17_53_34_BIKE_BIKEROAD — tracks',
+                                'TILED': true,
+                            },
+                            serverType: 'geoserver',
+                        }),
+                    }),
+                                        new ol.layer.Tile({
+                        source: new ol.source.TileWMS({
+                            url: 'http://localhost:8080/geoserver/opengis/wms',
+                            params: {
+                                'LAYERS': 'opengis:bikeroute_xyz_2023-08-22_17_53_34_BIKE_BIKEROAD — waypoints',
+                                'TILED': true,
+                            },
+                            serverType: 'geoserver',
+                        }),
+                    }),
+                    new ol.layer.Tile({
+                        source: new ol.source.TileWMS({
+                            url: 'http://localhost:8080/geoserver/opengis/wms',
+                            params: {
+                                'LAYERS': 'opengis:linktest',
+                                'TILED': true,
+                            },
+                            serverType: 'geoserver',
+                        }),
+                    }),
+                    new ol.layer.Tile({
+                        source: new ol.source.TileWMS({
+                            url: 'http://localhost:8080/geoserver/opengis/wms',
+                            params: {
+                                'LAYERS': 'opengis:nodetest',
+                                'TILED': true,
+                            },
+                            serverType: 'geoserver',
+                        }),
+                    }),
+                ],
+                target: 'map', // Map 생성할 div id
+                view: new ol.View({
+                    center: seoulCoords, // 서울시 좌표로 지도 초기 위치 설정
+                    zoom: 10, // 초기 지도 위치 줌 레벨
+                }),
+            });
+            
+            // 서울시에 마커 추가
+            var marker = new ol.Overlay({
+                position: seoulCoords,
+                element: document.getElementById('marker'),
+                positioning: 'bottom-center',
+            });
+            map.addOverlay(marker);
+        }
+    </script>
+</head>
+<body>
+    <div id="map" class="map"></div>
+    <div id="marker" style="width: 20px; height: 20px; background-color: red; border: 2px solid black;"></div>
+</body>
+</html>
