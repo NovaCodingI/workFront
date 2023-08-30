@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>레이아웃</title>
@@ -39,7 +38,6 @@
             width: 300px;
             background-color: white;
             border-radius: 20px;
-            background-color: #15ff00;
             
         }
         #box1{
@@ -87,7 +85,12 @@
         .carbtn:hover{
             background-color: rgb(240, 240, 240);
         }
-    </style>    
+        #hybrid_button.on {
+            background-color: rgb(0, 0, 255);
+            color: white;
+        }
+    </style>  
+    
 </head>
 <body>
     <main>
@@ -112,23 +115,22 @@
                     <h5><b>차량 목록</b></h5> 
                     <hr>
                     <div id='selectcarlist'>
-                        <p><i class="fa-solid fa-truck"></i> <button value='12가 1234' class='carbtn' onclick='selectcar()'>12가 1234</button></p>
-                        <p><i class="fa-solid fa-truck"></i> <button value='12가 1234' class='carbtn'>12가 1234</button></p>
+                        <p><i class="fa-solid fa-truck"></i> <button value='12가 1234' class='carbtn' id='selectcar'>12가 1234</button></p>
                     </div>
                 </div>                       
             </div>
             <br>
-            <div class='roundbox' id='box3'>
+            <div class='roundbox' id='box3' style="display:none;">
                 <div id='selectcar'>
                     <h5><b>12가 1234(변수)</b></h5> 
                     <hr>
                     <p>
                         <span id='datetext'>날짜선택 :</span>
                         <br>
-                        <form>
-                            <input type="date" id='currentDate'>
-                            <input type="submit" value="확인" class='btn btn-outline-primary'>
-                        </form>
+
+                        <input type="date" id='currentDate'>
+                        <input type="button" value="확인" class='btn btn-outline-primary'>
+
                     </p>
                     <hr>
                     <div id='resbox'>
@@ -146,62 +148,87 @@
     </main>
     
     <script>
+
+    document.addEventListener("DOMContentLoaded", function() {
+        // 버튼 클릭 이벤트 핸들러 함수 호출
+        base_button.onclick();
+        hybrid_button.onclick();
+
+        var box3 = document.getElementById('box3');
+        var close_button = document.getElementById('close'); // close 버튼을 변수로 선언
+        var selectcar_button = document.getElementById('selectcar'); // close 버튼을 변수로 선언
+
+        close_button.onclick = function() {
+            // box3 요소를 숨기기
+            box3.style.display = "none";
+        };
+
+        selectcar_button.onclick = function(){
+            box3.style.display = "block"
+        }
+
+    });
         /*
            http://openlayers.org/en/latest/examples/wmts-layer-from-capabilities.html?q=WMTSCapabilities
         */
         
-        var VworldBase,VworldSatellite,VworldGray,VworldMidnight,VworldHybrid;
+        var VworldBase,VworldSatellite,VworldHybrid;
         var attr = '&copy; <a href="http://dev.vworld.kr">vworld</a>';
-        var VworldHybrid = new ol.source.XYZ({
-           url: 'https://api.vworld.kr/req/wmts/1.0.0/1BED7823-51FA-30E5-8664-4B59FDCC983E/Hybrid/{z}/{y}/{x}.png'
-        }); //문자 타일 레이어
-        
-        var VworldSatellite = new ol.source.XYZ({
-           url: 'https://api.vworld.kr/req/wmts/1.0.0/1BED7823-51FA-30E5-8664-4B59FDCC983E/Satellite/{z}/{y}/{x}.jpeg'
-           ,attributions : attr
-        }); //항공사진 레이어 타일
-     
         var VworldBase = new ol.source.XYZ({
            url: 'https://api.vworld.kr/req/wmts/1.0.0/1BED7823-51FA-30E5-8664-4B59FDCC983E/Base/{z}/{y}/{x}.png'
            ,attributions : attr
         }); // 기본지도 타일      
+        
+        var VworldSatellite = new ol.source.XYZ({
+            url: 'https://api.vworld.kr/req/wmts/1.0.0/1BED7823-51FA-30E5-8664-4B59FDCC983E/Satellite/{z}/{y}/{x}.jpeg'
+            ,attributions : attr
+        }); //항공사진 레이어 타일
+        
+        var VworldHybrid = new ol.source.XYZ({
+           url: 'https://api.vworld.kr/req/wmts/1.0.0/1BED7823-51FA-30E5-8664-4B59FDCC983E/Hybrid/{z}/{y}/{x}.png'
+        }); //문자 타일 레이어
         /*
            control 설정
         */
-        
+
          var element = document.createElement('div');
          element.className = 'rotate-north ol-unselectable ol-control ol-mycontrol';
          
-         base_button.onclick=function(){
-             map.getLayers().forEach(function(layer){
-              if(layer.get("name")=="vworld"){              
-                
-                 layer.setSource(VworldBase)
-              }
-            })
-         }
-         sate_button.onclick=function(){
-             map.getLayers().forEach(function(layer){
-              if(layer.get("name")=="vworld"){
-                 layer.setSource(VworldSatellite)
-              }
-            })
-         }
-         hybrid_button.onclick=function(){
+        base_button.onclick = function () {
+        map.getLayers().forEach(function (layer) {
+            if (layer.get("name") == "vworld") {
+                layer.setSource(VworldBase);
+            }
+        });     
+
+        base_button.classList.add("active");
+        sate_button.classList.remove("active");
+        };
+
+        sate_button.onclick = function () {
+            map.getLayers().forEach(function (layer) {
+                if (layer.get("name") == "vworld") {
+                    layer.setSource(VworldSatellite);
+                }
+            });
+
+            base_button.classList.remove("active");
+            sate_button.classList.add("active");
+        };
+        hybrid_button.onclick = function () {
             var _this = this;
-              map.getLayers().forEach(function(layer){
-                 if(layer.get("name")=="hybrid"){
-                    if(_this.className == "on"){
-                     layer.setSource(null)
-                     _this.className ="";
-                    }else{
-                       _this.className ="on";
-                       
-                       layer.setSource(VworldHybrid)
+            map.getLayers().forEach(function (layer) {
+                if (layer.get("name") == "hybrid") {
+                    if (_this.classList.contains("on")) {
+                        layer.setSource(null);
+                        _this.classList.remove("on");
+                    } else {
+                        _this.classList.add("on");
+                        layer.setSource(VworldHybrid);
                     }
-                 }
-               })
-         }
+                }
+            })
+        }
          
          var layerControl = new ol.control.Control({element: element});
             
@@ -214,7 +241,8 @@
               new ol.layer.Tile({
                  source: VworldSatellite,
                  name:"vworld"
-              }),new ol.layer.Tile({
+              }),
+              new ol.layer.Tile({
                  source: VworldHybrid,
                  name:"hybrid"
               })
@@ -234,20 +262,24 @@
                  //Vworld Tile 변경
                  url: 'http://localhost:8080/geoserver/yongin/wms',
                  params: {
-                 'layers' : 'yongin:경기도한번더',
-                 'tiled' : 'true'
+                 'layers' : 'yongin:Clean_O',
+                 'tiled' : 'true',
+                 'VIEWPARAMS': 'date:' + '2023-08-30'
+
                  },
                  serverType: 'geoserver'
              })
           })
-     
+
           var link = new ol.layer.Tile({
              source: new ol.source.TileWMS({
                  //Vworld Tile 변경
                  url: 'http://localhost:8080/geoserver/yongin/wms',
                  params: {
-                 'layers' : 'yongin:Line',
-                 'tiled' : 'true'
+                 'layers' : 'yongin:Clean_X',
+                 'tiled' : 'true',
+                 'VIEWPARAMS': 'date:' + '2023-08-30'
+
                  },
                  serverType: 'geoserver'
              })
@@ -258,16 +290,19 @@
                  //Vworld Tile 변경
                  url: 'http://localhost:8080/geoserver/yongin/wms',
                  params: {
-                 'layers' : 'yongin:Point',
+                 'layers' : 'yongin:용인시경로 — layer',
                  'tiled' : 'true'
                  },
                  serverType: 'geoserver'
              })
-          })
+          })         
          
           map.addLayer(boundary);
           map.addLayer(link);
           map.addLayer(node);
+         
+          
+
          </script>
 
     <script>document.getElementById('currentDate').value = new Date().toISOString().substring(0, 10);</script>
